@@ -1,0 +1,119 @@
+// HTML code specific to publisher
+head
+  meta(name='viewport' content='initial-scale=1.0, user-scalable=no')
+  meta(charset='utf-8')
+  meta(name='author' content="Kevin P. , MITsdm'18")
+  title Safe Places: Publishing Tool
+  link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css')
+  link(rel='stylesheet' href='https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css')
+  script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js')
+  script(src='https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js')
+  link(rel='stylesheet' href='../css/style.css')
+  link(rel='stylesheet' href='../css/publisher.css')
+#get-map-api-panel.modal
+  // Modal content
+  .modal-content
+    .modal-header
+      h1 Safe Places
+    p#loginQuestion Enter a Google Maps Javascript API key.
+    p
+      | Either
+      a(href='https://developers.google.com/maps/documentation/javascript/get-api-key') get your own key
+      |                     or request one from an administrator.
+    form
+      label(for='api-key') Map API Key:
+      input#api-key.text.ui-widget-content.ui-corner-all(type='text' name='api-key' placeholder='map_api_key')
+      p
+      input#submit.button(type='button' value='Submit' onclick='enterAPIKey();')
+#login-panel.modal
+  // Modal content
+  .modal-content
+    .modal-header
+      h1 Safe Places
+    p#loginQuestion #{t('app.loginInstructions')}
+    p#validateTips &nbsp;
+    form
+      label(for='Username') #{t('Usuario')}
+      input#username.text.ui-widget-content.ui-corner-all(type='text' name='username' placeholder='name')
+      p
+      label(for='password') #{t('Contraseña')}
+      input#password.text.ui-widget-content.ui-corner-all(type='password' name='password' placeholder='password')
+      // Allow form submission with keyboard without duplicating the dialog button
+      p #{t('app.privacy')}
+      img#logo(onclick='onLogoClick()' src='')
+      img#logo_name(onclick='onLogoClick()' src='')
+      - var loginText = t('app.login')
+      input#login.button(type='button' value=loginText onclick='doLogin()')
+#saving-panel.modal
+  // Modal content
+  .modal-content
+    .modal-header
+      h2 Saving
+    p.progress Connecting...
+button#logout.btn(onclick='doLogout()')
+  i.fas.fa-sign-out-alt
+  |  #{t('app.logout')}
+#floating-panel
+  h2 Safe Places - #{t('publisher.title')}
+  input#privatekitJSON(style='display: none;' type='file' multiple='multiple' accept='.json' onchange='loadPath()')
+  button#loadFromFile.button(onclick="$('#privatekitJSON').click();")
+    i.fa.fa-folder-open
+    |  #{t('publisher.load')}
+  button#loadFromServer.button(onclick='loadPath()')
+    img#btn_logo(src='')
+    |  #{t('publisher.load')}
+  button#zoomToExtent.button.btn_view(onclick='zoomToExtent()')
+    i.fas.fa-expand-arrows-alt
+    |  Zoom
+  #stats(style='display: none;')
+    | Visible: 
+    span#visible 0
+    |  Hidden: 
+    span#hidden 0
+    |  Deleted:
+    span#deleted 0
+    |  Total: 
+    span#total 0
+  div
+    hr.fade-edge-hr
+    div(style='padding: 8px; text-align: left;')
+      | #{t('publisher.dateRange')}:
+      span#duration-container
+        span#duration
+        input#lock-window(onclick='updateLockIcon()' type='checkbox')
+        label(for='lock-window')
+          i#lock-icon.fas.fa-lock
+      br
+      #dates
+        #date-start &nbsp;
+        span#date-sep &nbsp;
+        #date-end &nbsp;
+      #slider-range
+    hr.fade-edge-hr
+    div(style='padding: 8px; text-align: left;')
+      | #{t('publisher.organizationName')}:
+      div
+        - var organizationPlaceholder = t('publisher.organizationPlaceholder');
+        input#org_name(placeholder=organizationPlaceholder type='text')
+        span.example  Ex: US Department of Health
+      |                     #{t('publisher.informationURL')}:
+      div
+        - var urlPlaceholder = t('publisher.urlPlaceholder');
+        input#org_url(placeholder=urlPlaceholder type='text')
+        span.example  Ex: https://my.org/path/to/news.html
+    hr.fade-edge-hr
+    div(style='align-self: start; width: 100%;')
+      button#get_bounds.button(onclick='showBounds()')
+        i.fa.fa-clipboard
+        |  #{t('publisher.bounds')}
+      input#bounds(type='text')
+      br
+    hr.fade-edge-hr
+    - var publishText = t('publisher.publish')
+    input#save.button.disabled(disabled='disabled' onclick='saveText();' type='button' value=publishText)
+#map
+img#map_logo(onclick='onLogoClick()' src='')
+img#map_logo_name(onclick='onLogoClick()' src='')
+script(src='../js/config.js')
+script(src='../js/lib.js')
+script(src='../js/publisher.js')

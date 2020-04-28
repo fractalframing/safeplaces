@@ -1,0 +1,41 @@
+{
+  "app": {
+    "description": "A toolkit for public health, built on top of data shared by users of ",
+    "scrubberDescription": "Tool to visualize and redact time/location data. Intended for use in Contact Tracing.",
+    "scrubber": "Location Viewer/Scrubber",
+    "publisher": "Publisher",
+    "publisherDescription": "Tool to combine and publish redacted time/location data files. Intended for use by Healthcare Authorities.",
+    "loginInstructions": "Enter your credentials",
+    "username": "Username",
+    "password": "Password",
+    "usernamePlaceholder": "Name",
+    "passwordPlaceholder": "Password",
+    "login": "Login",
+    "logout": "Salir",
+    "privacy": "privacy by"
+  },
+  "scrubber": {
+    "title": " Redaction Tool",
+    "load": "Load",
+    "save": "Save",
+    "selectPoint": "Select Point",
+    "selectArea": "Select Area",
+    "selectNone": "Select None",
+    "deleteAll": "Delete all",
+    "delete": "Delete",
+    "dateRange": "Date Range",
+    "hide": "Hide",
+    "travel": "Travel"
+  },
+  "publisher": {
+    "title": "",
+    "dateRange": "Date Range",
+    "load": "Load",
+    "organizationName": "Organization Name",
+    "organizationPlaceholder": "Enter the organization name",
+    "informationURL": "Information URL",
+    "urlPlaceholder": "Enter a URL for news and updates",
+    "bounds": "Bounds",
+    "publish": "Publish"
+  }
+}

@@ -1,0 +1,126 @@
+// HTML code specific to location-scrubber
+head
+  meta(name='viewport' content='initial-scale=1.0, user-scalable=no')
+  meta(charset='utf-8')
+  meta(name='author' content="Kevin P. , MITsdm'18")
+  title Safe Places: Redaction Tool
+  link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css')
+  link(rel='stylesheet' href='https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css')
+  script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js')
+  script(src='https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js')
+  link(rel='stylesheet' href='../css/style.css')
+#get-map-api-panel.modal
+  // Modal content
+  .modal-content
+    .modal-header
+      h1 Safe Places
+    p#loginQuestion Enter a Google Maps Javascript API key.
+    p
+      | Either
+      a(href='https://developers.google.com/maps/documentation/javascript/get-api-key') get your own key
+      |                     or request one from an administrator.
+    form
+      label(for='api-key') Map API Key:
+      input#api-key.text.ui-widget-content.ui-corner-all(type='text' name='api-key' placeholder='map_api_key')
+      p
+      input#submit.button(type='button' value='Submit' onclick='enterAPIKey();')
+#login-panel.modal
+  // Modal content
+  .modal-content
+    .modal-header
+      h1 Safe Places
+    p#loginQuestion #{t('app.loginInstructions')}
+    p#validateTips &nbsp;
+    form
+      label(for='Username') #{t('Usuario')}
+      input#username.text.ui-widget-content.ui-corner-all(type='text' name='username' placeholder='name')
+      p
+      label(for='password') #{t('Contraseña')}
+      input#password.text.ui-widget-content.ui-corner-all(type='password' name='password' placeholder='password')
+      // Allow form submission with keyboard without duplicating the dialog button
+      p #{t('app.privacy')}
+      img#logo(onclick='onLogoClick()' src='')
+      img#logo_name(onclick='onLogoClick()' src='')
+      - var loginText = t('app.login')
+      input#login.button(type='button' value=loginText onclick='doLogin()')
+#saving-panel.modal
+  // Modal content
+  .modal-content
+    .modal-header
+      h2 Saving
+    p.progress Connecting...
+button#logout.btn(onclick='doLogout()')
+  i.fas.fa-sign-out-alt
+  |  #{t('app.logout')}
+#floating-panel
+  h2 Safe Places -#{t('scrubber.title')}
+  input#privatekitJSON(style='display: none;' type='file' accept='.json,.null' onchange='loadPath()')
+  input#loadFileXml.button(type='button' value='Load' onclick="$('#privatekitJSON').click();")
+  button#save.button.disabled(disabled='disabled' onclick='saveText();')
+    img#btn_logo(src='')
+    |                 #{t('scrubber.save')}
+  #stats(style='display: none;')
+    | Visible: 
+    span#visible 0
+    |  Hidden: 
+    span#hidden 0
+    |  Deleted:
+    span#deleted 0
+    |  Total: 
+    span#total 0
+  hr.fade-edge-hr2
+  div
+    button#select-point.btn(onclick='selectNone()')
+      i.fas.fa-hand-pointer
+      |  #{t('scrubber.selectPoint')}
+    button#select-area.btn(onclick='selectArea();')
+      i.fa.fa-object-group
+      |  #{t('scrubber.selectArea')}
+    button#select-none.btn(onclick='selectNone();')
+      i.fa.fa-ban
+      |  #{t('scrubber.selectNone')}
+    p
+      button#delete-all-btn.btn.btn_delete.disabled(onclick='deleteAll()')
+        i.fa.fa-trash-alt
+        |  #{t('scrubber.deleteAll')}
+      button#delete-btn.btn.btn_delete.disabled(onclick='deleteSelectedMarker()')
+        i.fa.fa-trash-alt
+        |  #{t('scrubber.delete')}
+      button#zoomToExtent.btn.btn_view(onclick='zoomToExtent()')
+        i.fas.fa-expand-arrows-alt
+        |  Zoom
+      hr.fade-edge-hr
+      div(style='padding: 8px; text-align: left;')
+        | #{t('scrubber.dateRange')}
+        span#duration-container
+          span#duration
+          input#lock-window(onclick='updateLockIcon()' type='checkbox')
+          label(for='lock-window')
+            i#lock-icon.fas.fa-lock
+        br
+        #dates
+          #date-start &nbsp;
+          span#date-sep &nbsp;
+          #date-end &nbsp;
+        #slider-range
+      div(style='padding: 8px; text-align: left;')
+        span #{t('scrubber.hide')}:
+        br
+        span.checks
+          input#hide-15(type='checkbox' onchange='updateExposurePoints()')
+          label(for='hide-15') &lt; 15min
+        span.checks
+          input#hide-30(type='checkbox' onchange='updateExposurePoints()')
+          label(for='hide-30') &lt; 30min
+        span.checks
+          input#hide-60(type='checkbox' onchange='updateExposurePoints()')
+          label(for='hide-60') &lt; 1hr
+        span.checks
+          input#hide-travel(type='checkbox' onchange='updateExposurePoints()')
+          label(for='hide-travel') #{t('scrubber.travel')}
+#map
+img#map_logo(onclick='onLogoClick()' src='')
+img#map_logo_name(onclick='onLogoClick()' src='')
+script(src='../js/config.js')
+script(src='../js/lib.js')
+script(src='../js/location-scrubber.js')

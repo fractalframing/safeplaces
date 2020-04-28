@@ -1,0 +1,41 @@
+{
+  "app": {
+    "description": "Un kit de herramientas para salud pública, que incorpora los datos compartidos por usuarios de  ",
+    "scrubberDescription": "Herramienta para visualización y depuraciön de datos de fecha/hora y localización. Para uso en seguimiento de contacto.",
+    "scrubber": "Visualizador/Depurador de Localizaciones",
+    "publisher": "Publisher",
+    "publisherDescription": "Herramienta de compilación y publicación de los datos editados de fecha/hora y localización. Para uso de las autoridades de salud.",
+    "loginInstructions": "Ingresa tus credenciales",
+    "username": "Usuario",
+    "password": "Contraseña",
+    "usernamePlaceholder": "Nombre de usuario",
+    "passwordPlaceholder": "Contraseña",
+    "login": "Ingresar",
+    "logout": "Salir",
+    "privacy": "privacidad proveída por"
+  },
+  "scrubber": {
+    "title": "Herramienta de depuración",
+    "load": "Cargar",
+    "save": "Guardar",
+    "selectPoint": "Seleccionar Punto",
+    "selectArea": "Seleccionar Área",
+    "selectNone": "Deseleccionar",
+    "deleteAll": "Eliminar todo",
+    "delete": "Eliminar",
+    "dateRange": "Intervalo de fechas",
+    "hide": "Esconder",
+    "travel": "Viajes"
+  },
+  "publisher": {
+    "title": "Publicación",
+    "dateRange": "Intervalo de fechas",
+    "load": "Cargar",
+    "organizationName": "Nombre de la organización",
+    "organizationPlaceholder": "Ingresa el nombre de la organización",
+    "informationURL": "URL de información",
+    "urlPlaceholder": "Ingresa una URL para noticias y actualizaciones",
+    "bounds": "Límites geográficos",
+    "publish": "Publicar"
+  }
+}
