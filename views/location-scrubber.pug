@@ -3,12 +3,13 @@ head
   meta(name='viewport' content='initial-scale=1.0, user-scalable=no')
   meta(charset='utf-8')
   meta(name='author' content="Kevin P. , MITsdm'18")
-  title Safe Places: Redaction Tool
+  title Safe Places: #{t('scrubber.title')}
   link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css')
   link(rel='stylesheet' href='https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css')
   script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js')
   script(src='https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js')
   link(rel='stylesheet' href='../css/style.css')
+  link(rel='stylesheet' href='../css/location-scrubber.css')
 #get-map-api-panel.modal
   // Modal content
   .modal-content
@@ -55,10 +56,26 @@ button#logout.btn(onclick='doLogout()')
 #floating-panel
   h2 Safe Places -#{t('scrubber.title')}
   input#privatekitJSON(style='display: none;' type='file' accept='.json,.null' onchange='loadPath()')
-  input#loadFileXml.button(type='button' value='Load' onclick="$('#privatekitJSON').click();")
+  - var loadText = t('scrubber.load')
+  input#loadFileXml.button(type='button' value=loadText onclick="$('#privatekitJSON').click();")
   button#save.button.disabled(disabled='disabled' onclick='saveText();')
     img#btn_logo(src='')
     |                 #{t('scrubber.save')}
+  
+  #symbol_container
+    #default_marker.circle
+    span #{t('scrubber.default')}
+    #group_marker.circle
+    span #{t('scrubber.group')}
+    #selected_marker.circle
+    span #{t('scrubber.selected')}
+    #recurring_marker.circle
+    span #{t('scrubber.recurring')}
+    #transient_marker.circle
+    span #{t('scrubber.transient')}
+    #travel_marker.circle
+    span #{t('scrubber.travel')}
+
   #stats(style='display: none;')
     | Visible: 
     span#visible 0

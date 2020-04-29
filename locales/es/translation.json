@@ -25,7 +25,12 @@
     "delete": "Eliminar",
     "dateRange": "Intervalo de fechas",
     "hide": "Esconder",
-    "travel": "Viajes"
+    "travel": "Viajes",
+    "default": "Predeterminado",
+    "group": "Grupo",
+    "selected": "Seleccionado",
+    "recurring": "Recurrente",
+    "transient": "Pasajero"
   },
   "publisher": {
     "title": "Publicación",

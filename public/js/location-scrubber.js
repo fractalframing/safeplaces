@@ -974,9 +974,11 @@ function saveText() {
           url: "/redacted_trail/",
           type: "POST",
           data: JSON.stringify(payload),
+          dataType: "json",
+          contentType: "application/json",
           // Fetch the stored token from localStorage and set in the header
           headers: {
-              Authorization: localStorage.getItem("token"),
+              Authorization: 'Bearer ' + localStorage.getItem("token"),
           },
       });
 

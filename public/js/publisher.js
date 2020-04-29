@@ -254,9 +254,13 @@ function loadExposureData(exposureJSON) {
 function loadPath() {
   if (has_backend) {
       // Load from backend
-
+      let options = {
+        headers: {
+            'Authorization': 'Bearer ' + localStorage.getItem("token"),
+          },
+      }
       const url = BACKEND_ROOT + "/redacted_trails/";
-      fetch(url)
+      fetch(url, options)
           .then((response) => response.json())
           .then(function (content) {
               var trails = content["data"];
@@ -584,6 +588,7 @@ function saveText() {
           body: JSON.stringify(complete),
           headers: {
               "Content-Type": "application/json",
+              "Authorization": "Bearer " + localStorage.getItem('token')
           },
       };
 

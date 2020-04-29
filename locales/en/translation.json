@@ -25,7 +25,12 @@
     "delete": "Delete",
     "dateRange": "Date Range",
     "hide": "Hide",
-    "travel": "Travel"
+    "travel": "Travel",
+    "default": "Default",
+    "group": "Group",
+    "selected": "Selected",
+    "recurring": "Recurring",
+    "transient": "Transient"
   },
   "publisher": {
     "title": "",

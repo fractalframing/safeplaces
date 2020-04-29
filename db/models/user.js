@@ -4,6 +4,9 @@ module.exports = (sequelize, DataTypes) => {
     id: {
       type: DataTypes.UUID,
       primaryKey: true,
+      allowNull: false,
+      autoincrement: false,
+      defaultValue: DataTypes.UUIDV4
     },
     username: DataTypes.STRING,
     email: DataTypes.STRING,
@@ -11,7 +14,8 @@ module.exports = (sequelize, DataTypes) => {
     maps_api_key: DataTypes.TEXT
   }, {});
   User.associate = function(models) {
-    // associations can be defined here
+    User.belongsTo(models.Organization, { foreignKey: 'UserOrganizationId' });
+    User.hasMany(models.Trail, { foreignKey: 'id', target: 'organization_id' });
   };
   return User;
 };

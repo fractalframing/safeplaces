@@ -1,0 +1,48 @@
+#symbol_container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+}
+
+#default_marker {
+  width: 25px;
+  height: 25px;
+  background: #FE7569;
+}
+
+#group_marker {
+  width: 25px;
+  height: 25px;
+  background: #855DFD;
+}
+
+#selected_marker {
+  width: 25px;
+  height: 25px;
+  background: #34BA46;
+}
+
+#recurring_marker {
+  width: 25px;
+  height: 25px;
+  background: #E661AC;
+}
+
+#transient_marker {
+  width: 25px;
+  height: 25px;
+  background: #FF9900;
+}
+
+#travel_marker {
+  width: 25px;
+  height: 25px;
+  background: #FDF569;
+}
+
+.circle {
+  border-radius: 50%;
+  display: inline-block;
+  margin-left: 10px;
+}
