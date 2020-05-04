@@ -1,3 +1,7 @@
+# Safe Places
+
+A toolkit for public health, built on top of data shared by users of [Private Kit](https://github.com/tripleblindmarket/private-kit)
+
 # Example NodeJS Postgres DB based backend for Safeplaces API
 
 ## Deployment
